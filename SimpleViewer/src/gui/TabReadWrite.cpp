@@ -20,7 +20,6 @@
 #include <ifcpp/model/shared_ptr.h>
 #include <ifcpp/model/IfcPPModel.h>
 #include <ifcpp/model/IfcPPException.h>
-#include <ifcpp/model/IfcPPGuid.h>
 #include <ifcpp/IFC4/include/IfcAxis2Placement.h>
 #include <ifcpp/IFC4/include/IfcAxis2Placement3D.h>
 #include <ifcpp/IFC4/include/IfcGeometricRepresentationContext.h>

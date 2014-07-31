@@ -891,7 +891,7 @@ void GeomUtils::createFace( const std::vector<std::vector<carve::geom::vector<3>
 					double dz = v_a.v[2] - v_b.v[2];
 					if( std::abs(dz) < 0.0000001 )
 					{
-						std::cerr << "abs(dx) < 0.00001 && abs(dy) < 0.00001 && abs(dz) < 0.00001\n";
+						std::cerr << "std::abs(dx) < 0.00001 && std::abs(dy) < 0.00001 && std::abs(dz) < 0.00001\n";
 					}
 				}
 			}
@@ -1005,10 +1005,10 @@ void GeomUtils::extrude( const std::vector<std::vector<carve::geom::vector<2> > 
 		}
 
 		double signed_area = carve::geom2d::signedArea( loop_2d );
-		if( abs( signed_area ) < 0.000001 )
+		if( std::abs( signed_area ) < 0.000001 )
 		{
 #ifdef _DEBUG
-			err << "extrude: abs( signed_area ) < 0.001" << std::endl;
+			err << "extrude: std::abs( signed_area ) < 0.001" << std::endl;
 #endif
 			continue;
 		}

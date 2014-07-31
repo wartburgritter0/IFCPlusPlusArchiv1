@@ -31,7 +31,7 @@
 #include "ifcpp/IFC4/include/IfcRelationship.h"
 #include "ifcpp/IFC4/include/IfcStyledItem.h"
 
-#include "IfcPPGuid.h"
+#include "ifcpp/guid/CreateGuid_64.h"
 #include "IfcPPAttributeObject.h"
 #include "UnitConverter.h"
 #include "IfcPPException.h"

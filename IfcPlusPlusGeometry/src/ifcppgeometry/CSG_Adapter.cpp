@@ -108,12 +108,12 @@ void mergeAlignedEdges( shared_ptr<carve::mesh::MeshSet<3> >& meshset, carve::me
 #ifdef _DEBUG
 				if( std::abs( edge_i->length2() - sement12_length2 ) > 0.00001 )
 				{
-					std::cout << __func__ << ": abs( edge_i->length2() - sement12_length2 ) > 0.00001" << std::endl;
+					std::cout << __func__ << ": std::abs( edge_i->length2() - sement12_length2 ) > 0.00001" << std::endl;
 				}
 
 				if( std::abs( edge_next->length2() - sement23_length2 ) > 0.00001 )
 				{
-					std::cout << __func__ << ": abs( edge_next->length2() - sement23_length2 ) > 0.00001" << std::endl;
+					std::cout << __func__ << ": std::abs( edge_next->length2() - sement23_length2 ) > 0.00001" << std::endl;
 				}
 #endif
 
@@ -121,7 +121,7 @@ void mergeAlignedEdges( shared_ptr<carve::mesh::MeshSet<3> >& meshset, carve::me
 				sement12.normalize();
 				sement23.normalize();
 				double dot_angle = dot( sement12, sement23 );
-				if( abs( abs( dot_angle ) - 1.0 ) < 0.001 )
+				if( std::abs( std::abs( dot_angle ) - 1.0 ) < 0.001 )
 				{
 					// edges are in line
 					if( v1 == v3 )
@@ -171,9 +171,9 @@ void mergeAlignedEdges( shared_ptr<carve::mesh::MeshSet<3> >& meshset, carve::me
 
 
 					double dot_face_angle = dot( normal_face_i, normal_face_i_rev );
-					if( abs( dot_face_angle - 1.0 ) > 0.001 )
+					if( std::abs( dot_face_angle - 1.0 ) > 0.001 )
 					{
-						std::cout << __func__ << ": abs( dot_face_angle - 1.0 ) > 0.001" << std::endl;
+						std::cout << __func__ << ": std::abs( dot_face_angle - 1.0 ) > 0.001" << std::endl;
 					}
 #endif
 				}
@@ -379,7 +379,7 @@ void CSG_Adapter::retriangulateMeshSet( shared_ptr<carve::mesh::MeshSet<3> >& me
 						double dz = v_a.v[2] - v_b.v[2];
 						if( std::abs( dz ) < 0.0000001 )
 						{
-							std::cerr << "abs(dx) < 0.00001 && abs(dy) < 0.00001 && abs(dz) < 0.00001\n";
+							std::cerr << "std::abs(dx) < 0.00001 && std::abs(dy) < 0.00001 && std::abs(dz) < 0.00001\n";
 						}
 					}
 				}
