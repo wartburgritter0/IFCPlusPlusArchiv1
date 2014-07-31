@@ -11,6 +11,7 @@
  * OpenSceneGraph Public License for more details.
 */
 
+#include "PointConverter.h"
 
 #define _USE_MATH_DEFINES 
 #include <math.h>
@@ -31,8 +32,6 @@
 #include "GeomUtils.h"
 #include "GeometryException.h"
 #include "PlacementConverter.h"
-
-#include "PointConverter.h"
 
 PointConverter::PointConverter( shared_ptr<GeometrySettings>& geom_settings, shared_ptr<UnitConverter>& uc )
 	: m_geom_settings(geom_settings), m_unit_converter(uc)

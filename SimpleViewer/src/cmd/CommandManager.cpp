@@ -11,9 +11,9 @@
  * OpenSceneGraph Public License for more details.
 */
 
-#include <ifcpp/model/shared_ptr.h>
 #include "Command.h"
 #include "CommandManager.h"
+#include <ifcpp/model/shared_ptr.h>
 
 CommandManager::CommandManager()
 {
