@@ -15,16 +15,10 @@
 #include <QtGui/qevent.h>
 #include <QtCore/QSettings>
 
-#include <ifcpp/reader/IfcPlusPlusReader.h>
-#include <ifcpp/writer/IfcStepWriter.h>
 #include <ifcpp/model/shared_ptr.h>
 #include <ifcpp/model/IfcPPModel.h>
 #include <ifcpp/model/IfcPPException.h>
 #include <ifcpp/model/IfcPPGuid.h>
-#include <ifcpp/IFC4/include/IfcAxis2Placement.h>
-#include <ifcpp/IFC4/include/IfcAxis2Placement3D.h>
-#include <ifcpp/IFC4/include/IfcGeometricRepresentationContext.h>
-#include <ifcpp/IFC4/include/IfcDirection.h>
 #include <ifcppgeometry/ReaderWriterIFC.h>
 #include <ifcppgeometry/GeomUtils.h>
 
@@ -32,7 +26,7 @@
 #include "ViewController.h"
 #include "viewer/ViewerWidget.h"
 #include "viewer/Orbit3DManipulator.h"
-#include "cmd/CmdLoadIfcFile.h"
+#include "cmd/LoadIfcFileCommand.h"
 #include "cmd/CmdWriteIfcFile.h"
 #include "cmd/CommandManager.h"
 #include "TabReadWrite.h"
@@ -247,7 +241,7 @@ void TabReadWrite::slotLoadIfcFile( QString& path_in )
 
 	try
 	{
-		shared_ptr<CmdLoadIfcFile> cmd_load( new CmdLoadIfcFile( m_system ) );
+		shared_ptr<LoadIfcFileCommand> cmd_load( new LoadIfcFileCommand( m_system ) );
 		m_system->getReaderWriterIFC()->setProgressCallBack( this, &TabReadWrite::slotProgressValueWrapper );
 		m_system->getReaderWriterIFC()->setMessageCallBack( this, &TabReadWrite::slotMessageWrapper );
 		m_system->getReaderWriterIFC()->setErrorCallBack( this, &TabReadWrite::slotErrorWrapper );
@@ -296,6 +290,7 @@ void TabReadWrite::slotTxtOutWarning( QString txt )
 {
 	m_txt_out->append( "<div style=\"color:#a97878;\">Warning: " + txt.replace( "\n", "<br/>" ) + "</div><br/>" );
 }
+
 void TabReadWrite::slotTxtOutError( QString txt )
 {
 	m_txt_out->append( "<div style=\"color:red;\">Error: " + txt.replace( "\n", "<br/>" ) + "</div><br/>" );

@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <QApplication>
+
 #include <osg/ShapeDrawable>
 #include <osgUtil/IntersectionVisitor>
 #include <osg/MatrixTransform>
@@ -11,13 +11,6 @@
 #include <osgText/Text>
 
 #include <ifcpp/model/IfcPPModel.h>
-#include <ifcpp/model/IfcPPException.h>
-#include <ifcpp/reader/IfcStepReader.h>
-#include <ifcpp/writer/IfcStepWriter.h>
-#include <ifcpp/IFC4/include/IfcProduct.h>
-#include <ifcpp/IFC4/include/IfcRelationship.h>
-#include <ifcppgeometry/ReaderWriterIFC.h>
-
 #include "IfcPlusPlusSystem.h"
 #include "ViewController.h"
 #include "ViewerUtil.h"
