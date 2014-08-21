@@ -689,7 +689,10 @@ void IfcPPReaderSTEP::readStreamData(	std::string& read_in, const IfcPPModel::If
 	for( ; it_entity_vec!=vec_entities.end(); ++it_entity_vec )
 	{
 		shared_ptr<IfcPPEntity> entity = (*it_entity_vec);
-		target_map.insert( std::make_pair(entity->getId(), entity ) );
+        if (entity) // Skip aborted entities (which thew UnknownEntityException in readStepLines())
+        {
+            target_map.insert( std::make_pair(entity->getId(), entity ) );
+        }
 	}
 
 	try
