@@ -686,9 +686,9 @@ void IfcPPReaderSTEP::readStreamData(	std::string& read_in, const IfcPPModel::If
 	{
 		EntityReadContainer& entity_read_object = (*it_entity_vec);
 		shared_ptr<IfcPPEntity>& entity = entity_read_object.m_entity;
-		if (entity) // Skip aborted entities (which thew UnknownEntityException in readStepLines())
+		if( entity ) // skip aborted entities
 		{
-			target_map.insert( std::make_pair(entity->m_id, entity ) );
+			target_map.insert( std::make_pair( entity->m_id, entity ) );
 		}
 	}
 
@@ -773,6 +773,7 @@ static std::map<IfcPPEntityEnum, int> global_map_num_args = {
 	{ IfcPPEntityEnum::IFCMEMBER, 9 },
 	{ IfcPPEntityEnum::IFCOPENINGELEMENT, 9 },
 	{ IfcPPEntityEnum::IFCPLATE, 9 },
+	{ IfcPPEntityEnum::IFCPOSTALADDRESS, 10 },
 	{ IfcPPEntityEnum::IFCPROJECT, 9 },
 	{ IfcPPEntityEnum::IFCPROPERTYBOUNDEDVALUE, 6 },
 	{ IfcPPEntityEnum::IFCPROPERTYSINGLEVALUE, 4 },
