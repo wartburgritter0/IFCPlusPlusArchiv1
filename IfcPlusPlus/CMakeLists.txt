@@ -40,9 +40,9 @@ file (GLOB ifc4_source "src/ifcpp/IFC4/*.cpp")
 set(IFCPP_SOURCE_FILES 
   src/ifcpp/IfcPPEntityBroker.cpp
   src/ifcpp/IfcPPTypeBroker.cpp
-  src/ifcpp/guid/CreateGuid_64.cpp
   src/ifcpp/model/IfcPPAttributeObject.cpp
   src/ifcpp/model/IfcPPException.cpp
+  src/ifcpp/model/IfcPPGuid.cpp
   src/ifcpp/model/IfcPPModel.cpp
   src/ifcpp/model/IfcPPObject.cpp
   src/ifcpp/model/StatusObservable.cpp

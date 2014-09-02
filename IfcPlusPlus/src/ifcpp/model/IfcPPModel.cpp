@@ -33,7 +33,7 @@
 #include "ifcpp/IFC4/include/IfcStyledItem.h"
 #include "ifcpp/IFC4/include/IfcUnit.h"
 
-#include "ifcpp/guid/CreateGuid_64.h"
+#include "IfcPPGuid.h"
 #include "IfcPPAttributeObject.h"
 #include "UnitConverter.h"
 #include "IfcPPException.h"
