@@ -11,8 +11,8 @@
  * OpenSceneGraph Public License for more details.
 */
 
-#include "Command.h"
 #include <ifcpp/model/shared_ptr.h>
+#include "Command.h"
 
 bool Command::mouseMoved( const osgGA::GUIEventAdapter& , osgGA::GUIActionAdapter&  ){ return false; }
 bool Command::mouseClicked( const osgGA::GUIEventAdapter& , osgGA::GUIActionAdapter&  ){ return false; }

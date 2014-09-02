@@ -11,7 +11,6 @@
  * OpenSceneGraph Public License for more details.
 */
 
-#include "CurveConverter.h"
 
 #define _USE_MATH_DEFINES 
 #include <math.h>
@@ -56,6 +55,7 @@
 #include "PointConverter.h"
 #include "ProfileConverter.h"
 #include "SplineConverter.h"
+#include "CurveConverter.h"
 
 CurveConverter::CurveConverter( shared_ptr<GeometrySettings>& geom_settings, shared_ptr<UnitConverter>& uc, shared_ptr<PointConverter>& pc, shared_ptr<SplineConverter>& sc )
 	: m_geom_settings(geom_settings), m_unit_converter(uc), m_point_converter(pc), m_spline_converter(sc)

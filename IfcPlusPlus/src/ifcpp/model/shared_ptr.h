@@ -13,6 +13,8 @@
 
 #pragma once
 
+#include <ciso646> // Detect vendor-specific macros.
+
 #if _MSC_VER >= 1600
 
 #include <memory>
