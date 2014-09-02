@@ -71,4 +71,12 @@ set(CARVE_SOURCE_FILES
 
 ADD_LIBRARY(carve SHARED ${CARVE_SOURCE_FILES})
 
+set(carve_VERSION_MAJOR 2)
+set(carve_VERSION_MINOR 0)
+set(carve_VERSION_PATCH 0a)
+
+set_target_properties(carve PROPERTIES
+                      VERSION   "${carve_VERSION_MAJOR}.${carve_VERSION_MINOR}.${carve_VERSION_PATCH}"
+                      SOVERSION "${carve_VERSION_MAJOR}.${carve_VERSION_MINOR}")
+
 add_subdirectory(src/common) 
