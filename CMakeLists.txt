@@ -8,11 +8,11 @@ message(STATUS   "--------------------------------------------------------------
 IF(NOT CARVE_SOURCE_DIR)
   message(STATUS "CARVE_SOURCE_DIR not specified at cmake run! set it to internal carve")
   set(CARVE_SOURCE_DIR ${IFCPP_SOURCE_DIR}/Carve )
-  add_subdirectory (Carve)
 ENDIF(NOT CARVE_SOURCE_DIR)
 IF(NOT CARVE_BINARY_DIR)
   message(STATUS "CARVE_BINARY_DIR not specified at cmake run! set it to current build dir")
   set(CARVE_BINARY_DIR ${IFCPP_BINARY_DIR})
+  add_subdirectory (Carve)
 ENDIF(NOT CARVE_BINARY_DIR)
 message(STATUS   "------------------------------------------------------------------------")
 
