@@ -56,7 +56,6 @@ if(Boost_FOUND)
 else(Boost_FOUND)
   message(FATAL_ERROR "Could not find Boost libraries for Carve")
 endif(Boost_FOUND)
-add_definitions(-DCARVE_SYSTEM_BOOST)
 
 # Carve library
 message(STATUS "IfcPlusPlusGeometry: directories of Carve")
