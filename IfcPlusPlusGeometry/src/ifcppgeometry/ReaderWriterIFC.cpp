@@ -392,6 +392,7 @@ void ReaderWriterIFC::createGeometry()
 			shared_ptr<ShapeInputData> product_geom_input_data( new ShapeInputData() );
 			product_geom_input_data->ifc_product = product;
 
+			bool convertion_ok = true;
 			try
 			{
 				// (Compare types in lowercase to avoid typos)
@@ -422,16 +423,23 @@ void ReaderWriterIFC::createGeometry()
 			catch( IfcPPException& e )
 			{
 				thread_err << e.what();
+				convertion_ok = false;
 			}
 			catch( carve::exception& e )
 			{
 				thread_err << e.str();
+				convertion_ok = false;
 			}
 			catch( std::exception& e )
 			{
 				thread_err << e.what();
+				convertion_ok = false;
 			}
 			catch( ... )
+			{
+				convertion_ok = false;
+			}
+			if (!convertion_ok)
 			{
 				thread_err << "error in " << __FUNC__ << ", product id " << product_id << std::endl;
 			}
