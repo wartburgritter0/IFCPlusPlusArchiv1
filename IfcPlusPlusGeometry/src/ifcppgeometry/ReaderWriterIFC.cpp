@@ -110,6 +110,7 @@ void ReaderWriterIFC::resetModel()
 
 	m_ignored_types.clear();
 	m_selected_types.clear();	
+	m_selected_entities.clear();
 }
 
 void ReaderWriterIFC::clearInputCache()
@@ -169,7 +170,15 @@ osgDB::ReaderWriter::ReadResult ReaderWriterIFC::readNode( const std::string& fi
 		else
 		if (whatToDo == "select")
 		{
-			m_selected_types.push_back(withWhat);
+			unsigned int entity = std::stoi(withWhat);
+			if (entity>0)
+			{
+				m_selected_entities.push_back(withWhat);
+			}
+			else
+			{
+				m_selected_types.push_back(withWhat);
+			}
 		}
 		else
 		{
@@ -185,6 +194,11 @@ osgDB::ReaderWriter::ReadResult ReaderWriterIFC::readNode( const std::string& fi
 	}
 	std::cout << "Selecting types: " << std::endl;
 	for (std::vector<std::string>::iterator it = m_selected_types.begin(); it != m_selected_types.end(); ++it)
+	{
+		std::cout << "   " << *it << std::endl;
+	}
+	std::cout << "Selecting entities: " << std::endl;
+	for (std::vector<std::string>::iterator it = m_selected_entities.begin(); it != m_selected_entities.end(); ++it)
 	{
 		std::cout << "   " << *it << std::endl;
 	}
@@ -402,9 +416,13 @@ void ReaderWriterIFC::createGeometry()
 					*c = tolower(*c);
 				}
 
-				// Filter out element types found in m_ignored_types, select elements found in m_selected_types
-				if ((std::find(m_ignored_types.begin(),  m_ignored_types.end(),  lowercaseType) == m_ignored_types.end()) &&
-					((m_selected_types.size() == 0) || (std::find(m_selected_types.begin(), m_selected_types.end(), lowercaseType) != m_selected_types.end())))
+				// Filtering: 
+				// - element types found in m_ignored_types are OUT
+				// - selected types found in m_selected_types are IN
+				// - selected entities found in m_selected_entities are IN
+				if ((std::find(m_ignored_types.begin(), m_ignored_types.end(), lowercaseType) == m_ignored_types.end()) &&
+					((m_selected_types.size() == 0) || (std::find(m_selected_types.begin(), m_selected_types.end(), lowercaseType) != m_selected_types.end())) &&
+					((m_selected_entities.size() == 0) || (std::find(m_selected_entities.begin(), m_selected_entities.end(), std::to_string(product->m_id)) != m_selected_entities.end())))
 				{
 					// Build the shape representing the product, if required
 					convertIfcProduct( product, product_geom_input_data );

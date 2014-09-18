@@ -90,4 +90,5 @@ protected:
 
 	std::vector<std::string> m_selected_types; // IFC Types to select when reading an IFC file
 	std::vector<std::string> m_ignored_types; // IFC Types to ignore when reading an IFC file
+	std::vector<std::string> m_selected_entities; // IFC entities to select when reading an IFC file
 };
