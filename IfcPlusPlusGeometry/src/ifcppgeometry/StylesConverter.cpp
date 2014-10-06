@@ -215,8 +215,9 @@ void StylesConverter::convertIfcSurfaceStyle( shared_ptr<IfcSurfaceStyle> surfac
 
 				if( surf_style_rendering->m_SpecularColour)
 				{
-					shared_ptr<IfcColourOrFactor> specular_color = surf_style_rendering->m_SpecularColour;
-					//convertIfcColourOrFactor(specular_color, color, specularColor);
+					shared_ptr<IfcColourOrFactor> color_or_factor = surf_style_rendering->m_SpecularColour;
+					carve::geom::vector<4> specular_base_color = carve::geom::VECTOR( 1.0, 1.0, 1.0, surface_color.w );
+					convertIfcColourOrFactor(color_or_factor, specular_base_color, specular_color);
 				}
 
 				if( surf_style_rendering->m_Transparency)
@@ -255,7 +256,7 @@ void StylesConverter::convertIfcSurfaceStyle( shared_ptr<IfcSurfaceStyle> surfac
 
 			appearance_data->color_ambient = carve::geom::VECTOR(	ambient_color.x*0.8f,	ambient_color.y*0.8f,	ambient_color.z*0.8f,	transparency );
 			appearance_data->color_diffuse = carve::geom::VECTOR(	diffuse_color.x,		diffuse_color.y,		diffuse_color.z,		transparency );
-			appearance_data->color_specular = carve::geom::VECTOR(	specular_color.x*0.1,	specular_color.y*0.1,	specular_color.z*0.1,	transparency );
+			appearance_data->color_specular = carve::geom::VECTOR(	specular_color.x,	specular_color.y,	specular_color.z,	transparency );
 			appearance_data->shininess = shininess;
 			appearance_data->set_transparent = set_transparent;
 			appearance_data->transparency = transparency;
