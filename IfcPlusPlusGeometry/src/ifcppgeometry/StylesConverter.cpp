@@ -196,7 +196,7 @@ void StylesConverter::convertIfcSurfaceStyle( shared_ptr<IfcSurfaceStyle> surfac
 				surface_color = carve::geom::VECTOR( 0.1, 0.12, 0.15, surface_color.w );
 			}
 
-			carve::geom::vector<4> ambient_color( surface_color );
+			carve::geom::vector<4> ambient_color = carve::geom::VECTOR( 0.2, 0.2, 0.2, 1.f );
 			//carve::geom::vector<4> emissive_color( 0.0f, 0.0f, 0.0f, 1.f );
 			carve::geom::vector<4> diffuse_color( surface_color );
 			carve::geom::vector<4> specular_color( surface_color );
@@ -254,7 +254,7 @@ void StylesConverter::convertIfcSurfaceStyle( shared_ptr<IfcSurfaceStyle> surfac
 				}
 			}
 
-			appearance_data->color_ambient = carve::geom::VECTOR(	ambient_color.x*0.8f,	ambient_color.y*0.8f,	ambient_color.z*0.8f,	transparency );
+			appearance_data->color_ambient = carve::geom::VECTOR(	ambient_color.x,	ambient_color.y,	ambient_color.z,	transparency );
 			appearance_data->color_diffuse = carve::geom::VECTOR(	diffuse_color.x,		diffuse_color.y,		diffuse_color.z,		transparency );
 			appearance_data->color_specular = carve::geom::VECTOR(	specular_color.x,	specular_color.y,	specular_color.z,	transparency );
 			appearance_data->shininess = shininess;
