@@ -648,7 +648,7 @@ osg::StateSet* AppearanceManagerOSG::convertToStateSet( const shared_ptr<Appeara
 	mat->setDiffuse( osg::Material::FRONT_AND_BACK, diffuseColor );
 	mat->setSpecular( osg::Material::FRONT_AND_BACK, specularColor );
 	mat->setShininess( osg::Material::FRONT_AND_BACK, shininess );
-	mat->setColorMode( osg::Material::SPECULAR );
+	mat->setColorMode( osg::Material::DIFFUSE );
 
 	osg::StateSet* stateset = new osg::StateSet();
 	stateset->setAttribute( mat, osg::StateAttribute::ON );
