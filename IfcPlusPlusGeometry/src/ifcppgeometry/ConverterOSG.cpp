@@ -555,12 +555,96 @@ std::vector<osg::ref_ptr<osg::StateSet> > global_vec_existing_statesets;
 	Mutex writelock_appearance_cache;
 #endif
 
+//\brief AppearanceManagerOSG: Map for default materials
+std::map<std::string, shared_ptr<AppearanceData>> global_map_default_materials;
+
+void AppearanceManagerOSG::registerDefaultMaterials()
+{
+	// Walls
+	shared_ptr<AppearanceData> appDataWall (new AppearanceData(-1));
+	appDataWall->color_diffuse.x = 0.9f;
+	appDataWall->color_diffuse.y = 0.9f;
+	appDataWall->color_diffuse.z = 0.9f;
+	appDataWall->color_diffuse.w = 1.0f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairWallStdCase("IfcWallStandardCase", appDataWall);
+	global_map_default_materials.insert(pairWallStdCase);
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairWall("IfcWall", appDataWall);
+	global_map_default_materials.insert(pairWall);
+
+	// Site
+	shared_ptr<AppearanceData> appDataSite (new AppearanceData(-1));
+	appDataSite->color_diffuse.x = 0.75f;
+	appDataSite->color_diffuse.y = 0.8f;
+	appDataSite->color_diffuse.z = 0.65f;
+	appDataSite->color_diffuse.w = 1.0f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairSite("IfcSite", appDataSite);
+	global_map_default_materials.insert(pairSite);
+
+	// Slab
+	shared_ptr<AppearanceData> appDataSlab (new AppearanceData(-1));
+	appDataSlab->color_diffuse.x = 0.4f;
+	appDataSlab->color_diffuse.y = 0.4f;
+	appDataSlab->color_diffuse.z = 0.4f;
+	appDataSlab->color_diffuse.w = 1.0f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairSlab("IfcSlab", appDataSlab);
+	global_map_default_materials.insert(pairSlab);
+
+	// Window
+	shared_ptr<AppearanceData> appDataWindow (new AppearanceData(-1));
+	appDataWindow->color_diffuse.x = 0.75f;
+	appDataWindow->color_diffuse.y = 0.8f;
+	appDataWindow->color_diffuse.z = 0.75f;
+	appDataWindow->color_diffuse.w = 0.7f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairWindow("IfcWindow", appDataWindow);
+	global_map_default_materials.insert(pairWindow);
+
+	// Door
+	shared_ptr<AppearanceData> appDataDoor (new AppearanceData(-1));
+	appDataDoor->color_diffuse.x = 0.55f;
+	appDataDoor->color_diffuse.y = 0.3f;
+	appDataDoor->color_diffuse.z = 0.15f;
+	appDataDoor->color_diffuse.w = 1.0f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairDoor("IfcDoor", appDataDoor);
+	global_map_default_materials.insert(pairDoor);
+
+	// Beam
+	shared_ptr<AppearanceData> appDataBeam (new AppearanceData(-1));
+	appDataBeam->color_diffuse.x = 0.75f;
+	appDataBeam->color_diffuse.y = 0.7f;
+	appDataBeam->color_diffuse.z = 0.7f;
+	appDataBeam->color_diffuse.w = 1.0f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairBeam("IfcBeam", appDataBeam);
+	global_map_default_materials.insert(pairBeam);
+
+	// Railing, Member
+	shared_ptr<AppearanceData> appDataRailing (new AppearanceData(-1));
+	appDataRailing->color_diffuse.x = 0.65f;
+	appDataRailing->color_diffuse.y = 0.6f;
+	appDataRailing->color_diffuse.z = 0.6f;
+	appDataRailing->color_diffuse.w = 1.0f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairRailing("IfcRailing", appDataRailing);
+	global_map_default_materials.insert(pairRailing);
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairMember("IfcMember", appDataRailing);
+	global_map_default_materials.insert(pairMember);
+
+	// Plate
+	shared_ptr<AppearanceData> appDataPlate(new AppearanceData(-1));
+	appDataPlate->color_diffuse.x = 0.8f;
+	appDataPlate->color_diffuse.y = 0.8f;
+	appDataPlate->color_diffuse.z = 0.8f;
+	appDataPlate->color_diffuse.w = 1.0f;
+	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairPlate("IfcPlate", appDataPlate);
+	global_map_default_materials.insert(pairPlate);
+}
+
 void AppearanceManagerOSG::clearAppearanceCache()
 {
 #ifdef IFCPP_OPENMP
 	ScopedLock lock( writelock_appearance_cache );
 #endif
 	global_vec_existing_statesets.clear();
+
+	registerDefaultMaterials();
 }
 
 osg::StateSet* AppearanceManagerOSG::convertToStateSet( const shared_ptr<AppearanceData>& appearence )
@@ -670,3 +754,15 @@ osg::StateSet* AppearanceManagerOSG::convertToStateSet( const shared_ptr<Appeara
 	global_vec_existing_statesets.push_back( stateset );
 	return stateset;
 }
+
+osg::StateSet* AppearanceManagerOSG::getDefaultStateSet( const std::string& classname )
+{
+	std::map<std::string, shared_ptr<AppearanceData>>::iterator it = global_map_default_materials.find(classname);
+	if (it != global_map_default_materials.end())
+	{
+		return convertToStateSet(it->second);
+	}
+
+	// Meh, no default material defined for that classname
+	return NULL;
+}

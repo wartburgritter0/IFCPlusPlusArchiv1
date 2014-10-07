@@ -33,7 +33,8 @@ public:
 class AppearanceManagerOSG
 {
 public:
-	static void clearAppearanceCache();
-	static osg::StateSet* convertToStateSet( const shared_ptr<AppearanceData>& appearence );
-	
+    static void clearAppearanceCache();
+    static osg::StateSet* convertToStateSet( const shared_ptr<AppearanceData>& appearence );
+    static osg::StateSet* getDefaultStateSet( const std::string& classname );
+	static void registerDefaultMaterials();
 };

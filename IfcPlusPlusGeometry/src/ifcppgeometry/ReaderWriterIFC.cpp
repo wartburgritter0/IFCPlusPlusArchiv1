@@ -931,6 +931,11 @@ void ReaderWriterIFC::convertIfcProduct( const shared_ptr<IfcProduct>& product, 
 				}
 			}
 		}
+		else
+		{
+			osg::StateSet* item_default_stateset = AppearanceManagerOSG::getDefaultStateSet( product->classname() );
+			item_group->setStateSet( item_default_stateset );
+		}
 
 		// If anything has been created, add it to the product group
 		if( item_group->getNumChildren() > 0 )
@@ -1034,7 +1039,6 @@ void ReaderWriterIFC::convertIfcProduct( const shared_ptr<IfcProduct>& product, 
 		group_name << "#" << product_id << "=IfcSite";
 		product_switch->setName( group_name.str().c_str() );
 	}
-	// TODO: if no color or material is given, set color 231/219/169 for walls, 140/140/140 for slabs 
 
 	if( product_switch->getNumChildren() > 0 )
 	{
