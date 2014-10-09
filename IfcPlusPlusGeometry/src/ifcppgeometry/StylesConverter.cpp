@@ -184,22 +184,17 @@ void StylesConverter::convertIfcSurfaceStyle( shared_ptr<IfcSurfaceStyle> surfac
 		shared_ptr<IfcSurfaceStyleShading> surface_style_shading = dynamic_pointer_cast<IfcSurfaceStyleShading>(surf_style_element_select);
 		if( surface_style_shading )
 		{
-			carve::geom::vector<4> surface_color = carve::geom::VECTOR( 0.8, 0.82, 0.84, 1.f );
+			carve::geom::vector<4> surface_color = carve::geom::VECTOR( 0.0, 0.0, 0.0, 1.f );
 			if( surface_style_shading->m_SurfaceColour)
 			{
 				shared_ptr<IfcColourRgb> surf_color = surface_style_shading->m_SurfaceColour;
 				convertIfcColourRgb( surf_color, surface_color );
 			}
 
-			if( surface_color.x < 0.05 && surface_color.y < 0.05 && surface_color.z < 0.05 )
-			{
-				surface_color = carve::geom::VECTOR( 0.1, 0.12, 0.15, surface_color.w );
-			}
-
-			carve::geom::vector<4> ambient_color = carve::geom::VECTOR( 0.2, 0.2, 0.2, 1.f );
+			carve::geom::vector<4> ambient_color = carve::geom::VECTOR( 0.0, 0.0, 0.0, 1.f );
 			//carve::geom::vector<4> emissive_color( 0.0f, 0.0f, 0.0f, 1.f );
 			carve::geom::vector<4> diffuse_color( surface_color );
-			carve::geom::vector<4> specular_color( surface_color );
+			carve::geom::vector<4> specular_color( ambient_color );
 			float shininess = 35.f;
 			float transparency = surface_color.w;//0.7f;
 			bool set_transparent = false;
