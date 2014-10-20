@@ -1031,7 +1031,6 @@ void ReaderWriterIFC::convertIfcProduct( const shared_ptr<IfcProduct>& product, 
 	{
 		// TODO: make only glass part of window transparent
 		product_switch->setStateSet( m_glass_stateset );
-		GeomUtils::setMaterialAlpha( product_switch, 0.6f );
 	}
 	else if( dynamic_pointer_cast<IfcSite>( product ) )
 	{
