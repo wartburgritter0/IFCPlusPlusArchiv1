@@ -191,7 +191,7 @@ void StylesConverter::convertIfcSurfaceStyle( shared_ptr<IfcSurfaceStyle> surfac
 				convertIfcColourRgb( surf_color, surface_color );
 			}
 
-			carve::geom::vector<4> ambient_color = carve::geom::VECTOR( 0.0, 0.0, 0.0, 1.f );
+			carve::geom::vector<4> ambient_color = carve::geom::VECTOR( 0.2, 0.2, 0.2, 1.f );
 			//carve::geom::vector<4> emissive_color( 0.0f, 0.0f, 0.0f, 1.f );
 			carve::geom::vector<4> diffuse_color( surface_color );
 			carve::geom::vector<4> specular_color( ambient_color );
