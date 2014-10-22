@@ -1027,11 +1027,6 @@ void ReaderWriterIFC::convertIfcProduct( const shared_ptr<IfcProduct>& product, 
 	{
 		product_switch->setStateSet( m_glass_stateset );
 	}
-	else if( dynamic_pointer_cast<IfcCurtainWall>( product ) || dynamic_pointer_cast<IfcWindow>( product ) )
-	{
-		// TODO: make only glass part of window transparent
-		product_switch->setStateSet( m_glass_stateset );
-	}
 	else if( dynamic_pointer_cast<IfcSite>( product ) )
 	{
 		std::stringstream group_name;
