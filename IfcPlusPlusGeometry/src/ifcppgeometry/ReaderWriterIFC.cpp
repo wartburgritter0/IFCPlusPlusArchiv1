@@ -318,11 +318,7 @@ osgDB::ReaderWriter::ReadResult ReaderWriterIFC::readNode( const std::string& fi
 		m_unit_converter = m_ifc_model->getUnitConverter();
 		m_representation_converter = shared_ptr<RepresentationConverter>( new RepresentationConverter( m_geom_settings, m_unit_converter ) );
 
-		bool create_geometry = true;
-		// if the user value is not set, create_geometry remains true (default)
-		options->getUserValue( "createGeometry", create_geometry );
-
-		if( create_geometry )
+		if (options->getPluginStringData("createGeometry") != "false")
 		{
 			createGeometry();
 		}
