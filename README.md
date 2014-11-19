@@ -18,18 +18,20 @@ Example for OS X 10.9:
            -D OSG_BINARY_DIR:STRING=$YOUR_COTS_BIN_DIR/OpenSceneGraph/build-OSX \
            -D CARVE_SOURCE_DIR:STRING=$YOUR_COTS_SRC_DIR/Carve \
            -D CARVE_BINARY_DIR:STRING=$YOUR_COTS_BIN_DIR/Carve/build-OSX \
-           -D DESIRED_QT_VERSION:STRING="4" \
            -D BUILD_VIEWER_APPLICATION:BOOL=ON \
            -D CARVE_BOOST_COLLECTIONS:BOOL=TRUE \
-           -D Boost_DIR:STRING="$YOUR_COTS_BIN_DIR/boost_1_53_0" \
-           -D BOOST_INCLUDEDIR:STRING="$YOUR_COTS_SRC_DIR/boost_1_53_0" \
+           -D CARVE_SYSTEM_BOOST:BOOL=TRUE \
+           -D Boost_DIR:STRING="$YOUR_COTS_BIN_DIR/boost_1_54_0" \
+           -D BOOST_INCLUDEDIR:STRING="$YOUR_COTS_SRC_DIR/boost_1_54_0" \
            -D OSG_CXX_LANGUAGE_STANDARD:STRING="C++11" \
+           -D CMAKE_CXX_FLAGS:STRING="-std=c++11" \
+           -D CMAKE_EXE_LINKER_FLAGS:STRING="-stdlib=libc++" \
            -D DESIRED_QT_VERSION:STRING="5" \
            -D QT_QMAKE_EXECUTABLE:PATH="$YOUR_COTS_SRC_DIR/Qt5.3.0/5.3/clang_64/bin/qmake" \
            -D CMAKE_PREFIX_PATH:PATH="$YOUR_COTS_SRC_DIR/Qt5.3.0/5.3/clang_64" \
-           $YOUR_COTS_SRC_DIR/ifcplusplus
+           $YOUR_COTS_SRC_DIR/ifcplusplus2
 (C)configure, (G)enerate  
 
-    make -j4  
+    make -j 4  
 
     
