@@ -163,6 +163,7 @@ osgDB::ReaderWriter::ReadResult ReaderWriterIFC::readNode( const std::string& fi
 		size_t sepPosition = tokens[i].find (':');
 		std::string whatToDo = tokens[i].substr(0, sepPosition);
 		std::string withWhat = tokens[i].substr(sepPosition + 1);
+		unsigned int entity = 0;
 		if (whatToDo == "ignore")
 		{
 			m_ignored_types.push_back(withWhat);
@@ -170,14 +171,21 @@ osgDB::ReaderWriter::ReadResult ReaderWriterIFC::readNode( const std::string& fi
 		else
 		if (whatToDo == "select")
 		{
-			unsigned int entity = std::stoi(withWhat);
+			try 
+			{
+				entity = std::stoi(withWhat);
+			}
+		    catch( std::exception& e )
+		    {
+		    	if (std::string(e.what()) == std::string("stoi: no conversion"))
+		    	{
+					// withWhat is not numerical, let's say it's a type then
+					m_selected_types.push_back(withWhat);
+		    	}
+		    }
 			if (entity>0)
 			{
 				m_selected_entities.push_back(withWhat);
-			}
-			else
-			{
-				m_selected_types.push_back(withWhat);
 			}
 		}
 		else
