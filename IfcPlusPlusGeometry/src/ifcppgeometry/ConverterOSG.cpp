@@ -758,11 +758,17 @@ osg::StateSet* AppearanceManagerOSG::convertToStateSet( const shared_ptr<Appeara
 osg::StateSet* AppearanceManagerOSG::getDefaultStateSet( const std::string& classname )
 {
 	std::map<std::string, shared_ptr<AppearanceData>>::iterator it = global_map_default_materials.find(classname);
+	
 	if (it != global_map_default_materials.end())
 	{
 		return convertToStateSet(it->second);
 	}
 
-	// Meh, no default material defined for that classname
-	return NULL;
-}
+	// Meh, no default material defined for that classname, let's use some vanilla material
+	shared_ptr<AppearanceData> appDataDefault (new AppearanceData(-1));
+	appDataDefault->color_diffuse.x = 0.6f;
+	appDataDefault->color_diffuse.y = 0.6f;
+	appDataDefault->color_diffuse.z = 0.6f;
+	appDataDefault->color_diffuse.w = 1.0f;
+	return convertToStateSet(appDataDefault);
+}
