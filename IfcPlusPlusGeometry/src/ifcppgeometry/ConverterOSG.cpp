@@ -566,6 +566,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataWall->color_diffuse.y = 0.9f;
 	appDataWall->color_diffuse.z = 0.9f;
 	appDataWall->color_diffuse.w = 1.0f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataWall->color_ambient.x = 0.2f;
+	appDataWall->color_ambient.y = 0.2f;
+	appDataWall->color_ambient.z = 0.2f;
+	appDataWall->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairWallStdCase("IfcWallStandardCase", appDataWall);
 	global_map_default_materials.insert(pairWallStdCase);
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairWall("IfcWall", appDataWall);
@@ -577,6 +582,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataSite->color_diffuse.y = 0.8f;
 	appDataSite->color_diffuse.z = 0.65f;
 	appDataSite->color_diffuse.w = 1.0f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataSite->color_ambient.x = 0.2f;
+	appDataSite->color_ambient.y = 0.2f;
+	appDataSite->color_ambient.z = 0.2f;
+	appDataSite->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairSite("IfcSite", appDataSite);
 	global_map_default_materials.insert(pairSite);
 
@@ -586,6 +596,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataSlab->color_diffuse.y = 0.4f;
 	appDataSlab->color_diffuse.z = 0.4f;
 	appDataSlab->color_diffuse.w = 1.0f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataSlab->color_ambient.x = 0.2f;
+	appDataSlab->color_ambient.y = 0.2f;
+	appDataSlab->color_ambient.z = 0.2f;
+	appDataSlab->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairSlab("IfcSlab", appDataSlab);
 	global_map_default_materials.insert(pairSlab);
 
@@ -595,6 +610,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataWindow->color_diffuse.y = 0.8f;
 	appDataWindow->color_diffuse.z = 0.75f;
 	appDataWindow->color_diffuse.w = 0.7f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataWindow->color_ambient.x = 0.2f;
+	appDataWindow->color_ambient.y = 0.2f;
+	appDataWindow->color_ambient.z = 0.2f;
+	appDataWindow->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairWindow("IfcWindow", appDataWindow);
 	global_map_default_materials.insert(pairWindow);
 
@@ -604,6 +624,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataDoor->color_diffuse.y = 0.3f;
 	appDataDoor->color_diffuse.z = 0.15f;
 	appDataDoor->color_diffuse.w = 1.0f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataDoor->color_ambient.x = 0.2f;
+	appDataDoor->color_ambient.y = 0.2f;
+	appDataDoor->color_ambient.z = 0.2f;
+	appDataDoor->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairDoor("IfcDoor", appDataDoor);
 	global_map_default_materials.insert(pairDoor);
 
@@ -613,6 +638,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataBeam->color_diffuse.y = 0.7f;
 	appDataBeam->color_diffuse.z = 0.7f;
 	appDataBeam->color_diffuse.w = 1.0f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataBeam->color_ambient.x = 0.2f;
+	appDataBeam->color_ambient.y = 0.2f;
+	appDataBeam->color_ambient.z = 0.2f;
+	appDataBeam->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairBeam("IfcBeam", appDataBeam);
 	global_map_default_materials.insert(pairBeam);
 
@@ -622,6 +652,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataRailing->color_diffuse.y = 0.6f;
 	appDataRailing->color_diffuse.z = 0.6f;
 	appDataRailing->color_diffuse.w = 1.0f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataRailing->color_ambient.x = 0.2f;
+	appDataRailing->color_ambient.y = 0.2f;
+	appDataRailing->color_ambient.z = 0.2f;
+	appDataRailing->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairRailing("IfcRailing", appDataRailing);
 	global_map_default_materials.insert(pairRailing);
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairMember("IfcMember", appDataRailing);
@@ -633,6 +668,11 @@ void AppearanceManagerOSG::registerDefaultMaterials()
 	appDataPlate->color_diffuse.y = 0.8f;
 	appDataPlate->color_diffuse.z = 0.8f;
 	appDataPlate->color_diffuse.w = 1.0f;
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataPlate->color_ambient.x = 0.2f;
+	appDataPlate->color_ambient.y = 0.2f;
+	appDataPlate->color_ambient.z = 0.2f;
+	appDataPlate->color_ambient.w = 1.0f;
 	std::map<std::string, shared_ptr<AppearanceData>>::value_type pairPlate("IfcPlate", appDataPlate);
 	global_map_default_materials.insert(pairPlate);
 }
@@ -770,5 +810,12 @@ osg::StateSet* AppearanceManagerOSG::getDefaultStateSet( const std::string& clas
 	appDataDefault->color_diffuse.y = 0.6f;
 	appDataDefault->color_diffuse.z = 0.6f;
 	appDataDefault->color_diffuse.w = 1.0f;
+
+	// (0.2, 0.2, 0.2) for ambiant color matches the default ambiant color set in StylesConverter::convertIfcSurfaceStyle()
+	appDataDefault->color_ambient.x = 0.2f;
+	appDataDefault->color_ambient.y = 0.2f;
+	appDataDefault->color_ambient.z = 0.2f;
+	appDataDefault->color_ambient.w = 1.0f;
+
 	return convertToStateSet(appDataDefault);
 }
