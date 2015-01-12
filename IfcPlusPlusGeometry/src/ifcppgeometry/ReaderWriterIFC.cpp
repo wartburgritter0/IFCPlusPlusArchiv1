@@ -160,7 +160,7 @@ osgDB::ReaderWriter::ReadResult ReaderWriterIFC::readNode( const std::string& fi
 	std::vector<std::string> tokens(beg, end);
 	for(int i = 0; i < tokens.size(); i++)
 	{        
-		size_t sepPosition = tokens[i].find (':');
+		size_t sepPosition = tokens[i].find ('=');
 		std::string whatToDo = tokens[i].substr(0, sepPosition);
 		std::string withWhat = tokens[i].substr(sepPosition + 1);
 		unsigned int entity = 0;
@@ -187,10 +187,6 @@ osgDB::ReaderWriter::ReadResult ReaderWriterIFC::readNode( const std::string& fi
 			{
 				m_selected_entities.push_back(withWhat);
 			}
-		}
-		else
-		{
-			assert("unkown option");
 		}
 	}
 
